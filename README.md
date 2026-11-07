@@ -1,39 +1,43 @@
 ## DORKMASTER
 
-dork-master is a command line tool prototype that utilizes python's webbrowser and pdb modules to automate asuccession of google dorks based on user keywords. 
+Dorkmaster is a command-line tool prototype that utilizes Python's webbrowser and pdb modules to automate a succession of Google dorks based on user keywords. 
 
 ## ABOUT DORKMASTER
 
-This is a personal OSINT tool designed to simplify google dorking. It takes a list of keywords and creates dorked queries. It is not a traditional scraper, and thus reduces the risk of rate-limits and IP bans.
+This is a personal OSINT tool designed to simplify Google dorking. It takes a list of keywords and creates dorked queries. Because it is not a traditional scraper, it significantly reduces the risk of rate limits and IP bans.
 
-This script utilizes websites.txt and search_engines.txt, which are editable files. Websites.txt is the list of different domains to be used in the "site:" dork, while search_engines.txt utilizes a list of search engines that will be used by the webbrowser module (NOTE: not all webbrowsser or compatible with this program).
+This script utilizes websites.txt and search_engines.txt, both of which are editable files. websites.txt contains the list of different domains to be used in the "site:" dork, while search_engines.txt contains a list of search engines that will be used by the webbrowser module (NOTE: not all web browsers are compatible with this program).
 
-Dork-master will puase via pdb.set_trace() after each query, so please familiarize yourself with the pdb debuggers simple commands (namely continue, skip, and exit).
+Dorkmaster will pause via pdb.set_trace() after each query, so please familiarize yourself with the pdb debugger's simple commands (namely continue, skip, and exit). 
+
+There is an optional pynput mode (requires commenting out the pdb line in main.py) that simulates keystrokes rather than having to manually type in. debugger mode.
 
 ## REQUIREMENTS
-[ "build==1.5.0",
-"packaging==26.2",
-"pyproject-hooks==1.2.0",
-"requests>=2.34.2",
-]
 
-besides the python3 standard library, this program requires pynput.
+Python 3.x + standard library (urllib.parse, pdb, time, webbrowser, itertools)
 
-Navigate to the project folder and install using pip, pip3, or uv pip.
-ex: pip3 dist/dorkmaster_project-0.1.0-py3-none-any.whl
+Optional: pynput - only needed if you want to use the program in pynput mode.
 
 ## USAGE
 
-Once installed, navigate to the program root folder and run with:
-python main.py 
+Once installed, navigate to the program's root folder and run it with:
+
+python main.py
+
 or
+
 python3 main.py
 
-After loading the program, input a list of comma-seperated keywords listed in the mater of importance.
+After loading the program, input a list of comma-separated keywords listed in order of importance. The tool builds each query in the order given.
 
-Ex: 'John Doe, contractor, USA'
+Example: 'John Doe, contractor, USA'
 
-Once pdb pauses execution, contiue with by typing 'c' or 'continue.' Once you are satisfied with your search, type 'exit.'
+After each dork opens in a browser tab, the tool pauses via pdb. Review the results in the tab, then type 'c' or 'continue' to advance to the next search. Tabs stay open so you can flip back to cross-reference the dork results. The program doesn't close them.
+
+To stop the program entirely, type 'exit' (open tabs will remain open.
+
+### pynput mode (optional)
+
+To advance searches automatically instead of typing 'c' each time, comment out the pdb.set_trace() line in main.py. The program will then use pynput to simulate keystrokes, advancing to the next search on a timer (x seconds, configurable in main.py. This mode is faster but less human-looking than pdb mode; still not fully automated. install pynput with pip install pynput.
 
 ## Author: undonecan
-
