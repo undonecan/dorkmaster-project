@@ -1,6 +1,6 @@
 ## DORKMASTER
 
-Dorkmaster is a command-line tool prototype that utilizes Python's webbrowser and pdb modules to automate a succession of Google dorks based on user keywords. 
+Dorkmaster is a command-line tool that utilizes Python's webbrowser and pdb modules to automate a succession of Google dorks based on user keywords. 
 
 ## ABOUT DORKMASTER
 
@@ -8,19 +8,26 @@ This is a personal OSINT tool designed to simplify Google dorking. It takes a li
 
 This script utilizes websites.txt and search_engines.txt, both of which are editable files. websites.txt contains the list of different domains to be used in the "site:" dork, while search_engines.txt contains a list of search engines that will be used by the webbrowser module (NOTE: not all web browsers are compatible with this program).
 
-Dorkmaster will pause via pdb.set_trace() after each query, so please familiarize yourself with the pdb debugger's simple commands (namely continue, skip, and exit). 
+The default is to have the program pause via pdb.set_trace() after each query, so please familiarize yourself with the pdb debugger's simple commands (namely continue, skip, and exit). 
 
-There is an optional pynput mode (requires commenting out the pdb line in main.py) that simulates keystrokes rather than having to manually type in. debugger mode.
+Pynput mode (requires commenting out the pdb line in main.py) simulates keystrokes searching each dorked query in succession. Each search is on a default 5 second timer.
 
 ## REQUIREMENTS
 
 Python 3.x + standard library (urllib.parse, pdb, time, webbrowser, itertools)
-
-Optional: pynput - only needed if you want to use the program in pynput mode.
+pynput 
 
 ## USAGE
 
-Once installed, navigate to the program's root folder and run it with:
+For easiest install, clone the repo and use uv: 
+
+uv sync 
+
+and 
+
+uv run main.py
+
+Or, once you have the source code and all dependencies are installed, navigate to the program's root folder and run it with:
 
 python main.py
 
@@ -38,6 +45,16 @@ To stop the program entirely, type 'exit' (open tabs will remain open.
 
 ### pynput mode (optional)
 
-To advance searches automatically instead of typing 'c' each time, comment out the pdb.set_trace() line in main.py. The program will then use pynput to simulate keystrokes, advancing to the next search on a timer (x seconds, configurable in main.py. This mode is faster but less human-looking than pdb mode; still not fully automated. install pynput with pip install pynput.
+To advance searches automatically instead of typing 'c' each time, comment out the pdb.set_trace() line in main.py. The program will then use pynput to simulate keystrokes, advancing to the next search on a timer (5 seconds), configurable in main.py. This mode is faster but less human-looking than pdb mode; still not fully automated. 
+
+install pynput with pip install pynput.
+
+or 
+
+run uv add pynput
+
+## DISCLAIMER
+
+This tool is intended for educational use only. I assume no liability for its misuse.
 
 ## Author: undonecan
