@@ -10,12 +10,18 @@ This script utilizes websites.txt and search_engines.txt, both of which are edit
 
 The default is to have the program pause via pdb.set_trace() after each query, so please familiarize yourself with the pdb debugger's simple commands (namely continue, skip, and exit). 
 
-Pynput mode (requires commenting out the pdb line in main.py) simulates keystrokes searching each dorked query in succession. Each search is on a default 5 second timer.
+To forgo pdb, comment out the pdb line in main.py. This will simulate keystrokes searching each dorked query in succession. Each search is on a default 5 second timer in a separate tab.
 
 ## REQUIREMENTS
 
-Python 3.x + standard library (urllib.parse, pdb, time, webbrowser, itertools)
-pynput 
+Python 3.x + standard library (urllib.parse, pdb, time, webbrowser, itertools) + pynput 
+install pynput with:
+
+pip install pynput
+
+or
+
+run uv add pynput
 
 ## USAGE
 
@@ -41,17 +47,11 @@ Example: 'John Doe, contractor, USA'
 
 After each dork opens in a browser tab, the tool pauses via pdb. Review the results in the tab, then type 'c' or 'continue' to advance to the next search. Tabs stay open so you can flip back to cross-reference the dork results. The program doesn't close them.
 
-To stop the program entirely, type 'exit' (open tabs will remain open.
+To stop the program entirely, type 'exit' (open tabs will remain open).
 
-### pynput mode (optional)
+### pynput mode
 
 To advance searches automatically instead of typing 'c' each time, comment out the pdb.set_trace() line in main.py. The program will then use pynput to simulate keystrokes, advancing to the next search on a timer (5 seconds), configurable in main.py. This mode is faster but less human-looking than pdb mode; still not fully automated. 
-
-install pynput with pip install pynput.
-
-or 
-
-run uv add pynput
 
 ## DISCLAIMER
 
