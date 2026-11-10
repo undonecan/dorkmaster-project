@@ -1,9 +1,6 @@
 [project]
 name = "dorkmaster-project"
 version = "0.1.0"
-description = "This program utilizes the pdb and
-webbrowser modules ot automate dorked queries curated
-by the user."
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
